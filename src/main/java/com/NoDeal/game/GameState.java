@@ -1,4 +1,4 @@
-package com.NoDeal.cases;
+package com.NoDeal.game;
 
 public class GameState
 {
