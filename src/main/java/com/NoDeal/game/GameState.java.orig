@@ -1,5 +1,9 @@
 package com.NoDeal.game;
+<<<<<<< HEAD:src/main/java/com/NoDeal/game/GameState.java
+
 import java.util.ArrayList;
+=======
+>>>>>>> c9cc03eb1af39b38886764e5cb9bd562d8ad741f:src/main/java/com/NoDeal/game/GameState.java
 
 public class GameState
 {

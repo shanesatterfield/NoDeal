@@ -2,6 +2,7 @@ package com.NoDeal.game;
 
 import com.NoDeal.cases.*;
 import com.NoDeal.ai.*;
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Game extends Thread
@@ -64,10 +65,21 @@ public class Game extends Thread
 	public void setPlayer( Player ai )
 	{
 		player = ai;
+=======
+import java.util.*;
+
+public class Game
+{
+	public Game()
+	{
+		if( offers == null )
+			offers = new ArrayList<Integer>();
+>>>>>>> c9cc03eb1af39b38886764e5cb9bd562d8ad741f
 	}
 
 	public GameState getGameState()
 	{
+<<<<<<< HEAD
 		GameState gs = new GameState();
 		gs.casesLeft 	= bs.getCasesLeft();
 		gs.cashValuesLeft = bs.getCashValuesLeft();
@@ -89,4 +101,13 @@ public class Game extends Thread
 	private BriefSet 	bs;
 	private ArrayList<Integer> offers;
 	private GameResult  gr;
+=======
+		//GameState gs = bs.getGameState();
+		//gs.offers = offers.toArray( new int[ offers.size() ] );
+		return new GameState();
+	}
+
+	private ArrayList<Integer> offers;
+	private BriefSet bs;
+>>>>>>> c9cc03eb1af39b38886764e5cb9bd562d8ad741f
 }
