@@ -1,16 +1,50 @@
 package com.NoDeal;
 
-import com.NoDeal.cases.*;
+import com.NoDeal.game.*;
+import com.NoDeal.ai.*;
+import java.util.ArrayList;
 
 public class Runner
 {
 	public static void main( String args[] )
 	{
-		Briefcase brief = new Briefcase( 10 );
-		System.out.println( "Briefcase Value: " + brief.getCashValue() );
+		ArrayList<GameResult> results = new ArrayList<GameResult>();
+		ArrayList<Game> games         = new ArrayList<Game>();
+		for( int i = 0; i < 1000; ++i )
+		{
+			Game game = new Game( new TestBanker(), new TestPlayerMean() );
+			games.add( game );
+			game.start();
+		}
 
-		BriefSet bs = new BriefSet( new int[]{1,2,3,4} );
-		bs.open( 1 );
-		System.out.println( "Briefcases Left: " + bs.left() );
+		for( Game n: games )
+		{
+			try {
+				n.join();
+				results.add( n.getGameResult() );
+			} catch( InterruptedException e ) { e.printStackTrace(); }
+		}
+
+		printResults( doMetricsAvg(results) );
+	}
+
+	public static void printResults( GameResult gr )
+	{
+		System.out.printf("Player Winnings: %d\nBanker Winnings: %d\n\n", gr.playerWinnings, gr.bankerWinnings);
+	}
+
+	public static GameResult doMetricsAvg( ArrayList<GameResult> gr )
+	{
+		GameResult finalResults = new GameResult();
+		for( GameResult iter: gr )
+		{
+			finalResults.playerWinnings += iter.playerWinnings;
+			finalResults.bankerWinnings += iter.bankerWinnings;
+		}
+
+		finalResults.playerWinnings /= gr.size();
+		finalResults.bankerWinnings /= gr.size();
+
+		return finalResults;
 	}
 }

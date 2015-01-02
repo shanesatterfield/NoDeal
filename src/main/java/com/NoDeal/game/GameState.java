@@ -1,11 +1,12 @@
-package com.NoDeal.cases;
+package com.NoDeal.game;
+
+import java.util.ArrayList;
 
 public class GameState
 {
-	public int[] opened;
 	public int[] casesLeft;
 	public int[] cashValuesLeft;
 	public int[] cashValuesList;
 
-	public int[] offers;
+	public ArrayList<Integer> offers;
 }

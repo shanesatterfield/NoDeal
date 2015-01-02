@@ -87,6 +87,28 @@ public class BriefSetTest
 		assertTrue( checkShuffled( testValues, b ) );
 	}
 
+	@Test
+	public void testShuffleInt()
+	{
+		int[] arr = new int[1000000];
+		for( int i = 0; i < arr.length; ++i )
+			arr[i] = i;
+
+		BriefSet.shuffle( arr );
+
+		boolean shuffled = false;
+		for( int i = 0; i < arr.length; ++i )
+		{
+			if( i != arr[i] )
+			{
+				shuffled = true;
+				break;
+			}
+		}
+
+		assertTrue( shuffled );
+	}
+
 	private Boolean checkShuffled( int[] arr, BriefSet b )
 	{
 		Boolean shuffled = false;

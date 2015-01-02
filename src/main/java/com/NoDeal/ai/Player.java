@@ -1,6 +1,6 @@
 package com.NoDeal.ai;
 
-import com.NoDeal.cases.GameState;
+import com.NoDeal.game.GameState;
 
 public interface Player
 {
